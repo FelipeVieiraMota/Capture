@@ -10,11 +10,11 @@ public class MainVerticle extends AbstractVerticle {
     vertx.createHttpServer().requestHandler(req -> {
       req.response()
         .putHeader("content-type", "text/plain")
-        .end("Capture works !");
+        .end(" Capture works !");
     }).listen(8884, http -> {
       if (http.succeeded()) {
         startPromise.complete();
-        System.out.println("HTTP server started on port 8888");
+        System.out.println("HTTP server started on port 8884");
       } else {
         startPromise.fail(http.cause());
       }

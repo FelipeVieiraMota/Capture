@@ -6,9 +6,10 @@ networks:
 
 services:
   api-capure:
-      build:
-        context: "."
-      image: app/capture:alphine
+      # build:
+      #   context: "."
+      # image: capture
+      image: felipemotadocker/capture:1.0.0
       environment:
         entity_id: 8ac7a4ca6db97ef1016dbe9214e70aac
         authentication: Bearer OGFjN2E0Y2E2ZGI5N2VmMTAxNmRiZTkwZTMxZDBhYTh8WENkRUs0NHJubQ==
@@ -19,7 +20,7 @@ services:
       networks:
         - custom
       external_links:
-        - api-refund:app/refund
+        - api-refund:refund
       ports:
           - "8884:8884"
 

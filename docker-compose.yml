@@ -1,13 +1,26 @@
 version : "3.3"
+
+networks:
+  custom:
+    external: true
+
 services:
   api-capure:
       build:
         context: "."
+      image: app/capture:alphine
       environment:
         entity_id: 8ac7a4ca6db97ef1016dbe9214e70aac
-        Authentication: OGFjN2E0Y2E2ZGI5N2VmMTAxNmRiZTkwZTMxZDBhYTh8WENkRUs0NHJubQ==
+        authentication: Bearer OGFjN2E0Y2E2ZGI5N2VmMTAxNmRiZTkwZTMxZDBhYTh8WENkRUs0NHJubQ==
+        url_end_point: https://test.oppwa.com/v1/payments
         # dockerfile: "" If we changed Dockerfile name we can put it here in this line
       container_name: capture-container
       restart: always
+      networks:
+        - custom
+      external_links:
+        - api-refund:app/refund
       ports:
           - "8884:8884"
+
+

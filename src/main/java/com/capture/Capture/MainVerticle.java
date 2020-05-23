@@ -14,7 +14,7 @@ public class MainVerticle extends AbstractVerticle {
     router.get("/capture/:id").handler(context ->{
         String id = context.request().getParam("id");
         context.response().putHeader("content-type", "application/json; charset=utf-8").end(Json.encodePrettily(CaptureServices.createCaptureRequest(id)));
-      });
+    });
 
     vertx.createHttpServer().requestHandler(router).listen(8884);
   }
